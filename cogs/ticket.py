@@ -19,6 +19,11 @@ class Ticket(ezcord.Cog, emoji="🎫"):
         await ctx.send(embed=embed3, view=ANView())
         await ctx.respond("Ticket-Embed wurde erstellt.", ephemeral=True)
 
+    @commands.Cog.listener()
+    async def on_ready(self):
+        self.bot.add_view(ANView())
+        self.bot.add_view(ANClose())
+
 
 class ANView(discord.ui.View):
     def __init__(self):
